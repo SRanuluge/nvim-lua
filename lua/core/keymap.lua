@@ -1,20 +1,42 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+-- set leader key to space
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-vim.opt.backspace = '2'
-vim.opt.showcmd = true
-vim.opt.laststatus = 2
-vim.opt.autowrite = true
-vim.opt.cursorline = true
-vim.opt.autoread = true
+local keymap = vim.keymap -- for conciseness
 
--- use spaces for tabs and whatnot
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.shiftround = true
-vim.opt.expandtab = true
+---------------------
+-- General Keymaps
+---------------------
 
-vim.cmd [[ set noswapfile ]]
+-- use jk to exit insert mode
+keymap.set("i", "jk", "<ESC>")
 
---Line numbers
-vim.wo.number = true
+-- clear search highlights
+keymap.set("n", "<leader>nh", ":nohl<CR>")
+
+-- nvim-tree
+keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>") -- toggle file explorer
+
+-- delete single character without copying into register
+keymap.set("n", "x", '"_x')
+
+-- increment/decrement numbers
+keymap.set("n", "<leader>+", "<C-a>") -- increment
+keymap.set("n", "<leader>-", "<C-x>") -- decrement
+
+----------------------
+-- Plugin Keybinds
+----------------------
+
+
+-- telescope
+keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>") -- find files within current working directory, respects .gitignore
+keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in current working directory as you type
+keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
+keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
+keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+
+
+-- restart lsp server (not on youtube nvim video)
+keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
+
