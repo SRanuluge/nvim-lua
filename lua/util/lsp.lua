@@ -16,7 +16,7 @@ M.on_attach = function(client, bufnr)
 	mapkey("<leader>pd", "Lspsaga diagnostic_jump_prev", "n", opts) -- jump to prev diagnostic in buffer
 	mapkey("<leader>nd", "Lspsaga diagnostic_jump_next", "n", opts) -- jump to next diagnostic in buffer
 	mapkey("K", "Lspsaga hover_doc", "n", opts) -- show documentation for what is under cursor
-
+	mapkey("<leader>rs", "LspRestart", "n", opts) -- Lsp restart
 	if client.name == "pyright" then
 		mapkey("<Leader>oi", "PyrightOrganizeImports", "n", opts)
 	end

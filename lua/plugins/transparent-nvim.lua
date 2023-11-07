@@ -1,5 +1,6 @@
 return {
 	"xiyaowong/transparent.nvim",
+	priority = 1000,
 	lazy = false,
 	config = function()
 		vim.cmd([[hi StatusLine ctermbg=0 cterm=NONE]])
@@ -28,12 +29,14 @@ return {
 				"CursorLineNr",
 				"EndOfBuffer",
 				"InsertEnter",
+				"StatusLine",
 			},
 			extra_groups = {
 				"CursorLine",
 				"NormalFloat",
-				"TablineFill"
-        
+				"TablineFill",
+				"NvimTreeNormal",
+				-- "StatusLine",
 			}, -- table: additional groups that should be cleared
 			exclude_groups = {}, -- table: groups you don't want to clear
 		})

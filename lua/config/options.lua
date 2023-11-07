@@ -1,6 +1,10 @@
 local opt = vim.opt
 
--- Tab / Indentation
+-- For nvim tree suggested in docs
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1 -- Tab / Indentation
+opt.termguicolors = true
+
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.softtabstop = 2

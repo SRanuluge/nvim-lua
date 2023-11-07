@@ -61,10 +61,10 @@ local config = function()
 	lspconfig.tsserver.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		filetypes = {
-			"typescript",
-		},
-		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+		-- filetypes = {
+		-- 	"typescriptreact", "javascriptreact"
+		-- },
+		-- root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
 	})
 
 	-- bash
@@ -75,11 +75,11 @@ local config = function()
 	})
 
 	-- solidity
-	lspconfig.solidity.setup({
-		capabilities = capabilities,
-		on_attach = on_attach,
-		filetypes = { "solidity" },
-	})
+	-- lspconfig.solidity.setup({
+	-- 	capabilities = capabilities,
+	-- 	on_attach = on_attach,
+	-- 	filetypes = { "solidity" },
+	-- })
 
 	-- html, typescriptreact, javascriptreact, css, sass, scss, less, svelte, vue
 	lspconfig.emmet_ls.setup({
@@ -116,7 +116,7 @@ local config = function()
 	local shfmt = require("efmls-configs.formatters.shfmt")
 	local alex = require("efmls-configs.linters.alex")
 	local hadolint = require("efmls-configs.linters.hadolint")
-	local solhint = require("efmls-configs.linters.solhint")
+	-- local solhint = require("efmls-configs.linters.solhint")
 
 	-- configure efm server
 	lspconfig.efm.setup({
@@ -130,11 +130,13 @@ local config = function()
 			"javascriptreact",
 			"typescript",
 			"typescriptreact",
-			"svelte",
-			"vue",
+			-- "svelte",
+			-- "vue",
 			"markdown",
 			"docker",
-			"solidity",
+			-- "solidity",
+      "html",
+			"css",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -155,11 +157,13 @@ local config = function()
 				javascript = { eslint_d, prettierd },
 				javascriptreact = { eslint_d, prettierd },
 				typescriptreact = { eslint_d, prettierd },
-				svelte = { eslint_d, prettierd },
-				vue = { eslint_d, prettierd },
+				-- svelte = { eslint_d, prettierd },
+				-- vue = { eslint_d, prettierd },
 				markdown = { alex, prettierd },
 				docker = { hadolint, prettierd },
-				solidity = { solhint },
+				-- solidity = { solhint },
+        html = { prettierd },
+				css = { prettierd },
 			},
 		},
 	})
@@ -167,6 +171,7 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
 	config = config,
 	lazy = false,
 	dependencies = {
@@ -176,5 +181,6 @@ return {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
+    { "antosha417/nvim-lsp-file-operations", config = true },
 	},
 }

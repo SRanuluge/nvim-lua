@@ -2,22 +2,24 @@ local mapkey = require("util.keymapper").mapkey
 
 local config = function()
 	local telescope = require("telescope")
-	telescope.setup(
-    {
+	local actions = require("telescope.actions")
+	telescope.setup({
 		defaults = {
-			mappings = {
+			mappingis = {
 				i = {
 					["<C-j>"] = "move_selection_next",
 					["<C-k>"] = "move_selection_previous",
+					["<C-q>"] = "send_selected_to_qflist",
+					["<C-l>"] = "actions.open_qflist",
 				},
 			},
 		},
 		pickers = {
-			find_files = {
-				theme = "dropdown",
-				previewer =false,
-				hidden = true,
-			},
+			-- find_files = {
+			-- 	theme = "dropdown",
+			-- 	previewer = true,
+			-- 	hidden = true,
+			-- },
 			live_grep = {
 				theme = "dropdown",
 				previewer = false,
@@ -25,9 +27,9 @@ local config = function()
 			buffers = {
 				theme = "dropdown",
 				previewer = false,
-			}
-    }}
-  )
+			},
+		},
+	})
 end
 
 return {
@@ -35,7 +37,7 @@ return {
 	tag = "0.1.4",
 	lazy = false,
 	dependencies = { "nvim-lua/plenary.nvim" },
-  config = config,
+	config = config,
 	keys = {
 		mapkey("<leader>fk", "Telescope keymaps", "n"),
 		mapkey("<leader>fh", "Telescope help_tags", "n"),
