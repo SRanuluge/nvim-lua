@@ -1,5 +1,6 @@
 local config = function()
 	local theme = require("lualine.themes.nightfox")
+	local lazy_status = require("lazy.status")
 
 	-- set bg transparency in all modes
 	theme.normal.c.bg = nil
@@ -15,19 +16,29 @@ local config = function()
 		},
 		tabline = {
 			--  section = {
-			lualine_a = { "mode" },
+			-- lualine_a = { "mode" },
 			lualine_b = { "buffers" },
-			lualine_x = { "encoding", "fileformat", "filetype" },
-			lualine_y = { "progress" },
-			lualine_z = { "location" },
+			-- lualine_x ={{
+			--          lazy_status.updates,
+			--          cond = lazy_status.has_updates,
+			--          color = { fg = "#ff9e64" },
+			--        }, { "encoding", "fileformat", "filetype" }},
+			-- lualine_y = { "progress" },
+			-- lualine_z = { "location" },
 		},
 		--	},
 		sections = {
-
-			--	taline_a = { "mode" },
-			--	lualine_x = { "encoding", "fileformat", "filetype" },
-			--	lualine_y = { "progress" },
-			--	lualine_z = { "location" },
+			lualine_a = { "mode" },
+			lualine_x = {
+				{
+					lazy_status.updates,
+					cond = lazy_status.has_updates,
+					color = { fg = "#ff9e64" },
+				},
+				{ "encoding", "fileformat", "filetype" },
+			},
+			lualine_y = { "progress" },
+			lualine_z = { "location" },
 		},
 	})
 	--
