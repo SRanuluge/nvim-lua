@@ -5,12 +5,15 @@ local config = function()
 	local actions = require("telescope.actions")
 	telescope.setup({
 		defaults = {
-			mappingis = {
+			path_display = { "truncate " },
+			mappings = {
 				i = {
-					["<C-j>"] = "move_selection_next",
-					["<C-k>"] = "move_selection_previous",
-					["<C-q>"] = "send_selected_to_qflist",
-					["<C-l>"] = "actions.open_qflist",
+					-- ["<C-j>"] = "move_selection_next",
+					-- ["<C-k>"] = "move_selection_previous",
+					-- ["<C-q>"] = "send_selected_to_qflist",
+					["<C-k>"] = actions.move_selection_previous, -- move to prev result
+					["<C-j>"] = actions.move_selection_next, -- move to next result
+					["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				},
 			},
 		},
@@ -34,7 +37,7 @@ end
 
 return {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.4",
+	-- tag = "0.1.4",
 	lazy = false,
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = config,
