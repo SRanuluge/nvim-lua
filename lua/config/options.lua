@@ -1,8 +1,8 @@
 local opt = vim.opt
 
--- For nvim tree suggested in docs
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1 -- Tab / Indentation
+-- For nvim tree suggested in doc this is done in init.lua files
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1 -- Tab / Indentation
 opt.termguicolors = true
 
 opt.tabstop = 2
