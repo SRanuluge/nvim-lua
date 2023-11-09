@@ -27,7 +27,8 @@ mapkey("<C-l>", "wincmd l", "t") -- Navigate Right
 -- Window Management
 mapkey("<leader>sv", "vsplit", "n") -- Split Vertically
 mapkey("<leader>sh", "split", "n") -- Split Horizontally
-mapkey("<leader>sm", "MaximizerToggle", "n") -- Toggle Minimise
+mapkey("<leader>se", "<C-w>=", "n", { desc = "Make split equal size" }) --Make split equal sizee
+mapkey("<leader>sx", "close", "n", { desc = "Close current split" }) --Close current split
 
 -- Indenting
 mapkey("<", "v", "<gv") -- Shift Indentation to Left
