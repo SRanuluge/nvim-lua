@@ -39,6 +39,8 @@ return {
 				"emmet_ls",
 				"prismals",
 				"pyright",
+				"dockerls",
+				"phpactor",
 			},
 
 			-- auto-install configured servers (with lspconfig)
@@ -55,7 +57,7 @@ return {
 				"eslint_d", -- js linter
 				"hadolint", -- docker linter
 				"shfmt", -- sh formatter
-				"flake8", -- python
+				-- "flake8", -- python
 				"shellcheck", -- sh linter
 			},
 		})
