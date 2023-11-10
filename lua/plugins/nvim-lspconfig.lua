@@ -131,82 +131,15 @@ local config = function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 	})
-	--
-	-- 	local luacheck = require("efmls-configs.linters.luacheck")
-	-- 	local stylua = require("efmls-configs.formatters.stylua")
-	-- 	local flake8 = require("efmls-configs.linters.flake8")
-	-- 	local black = require("efmls-configs.formatters.black")
-	-- 	local eslint_d = require("efmls-configs.linters.eslint_d")
-	-- 	local prettierd = require("efmls-configs.formatters.prettier_d")
-	-- 	local fixjson = require("efmls-configs.formatters.fixjson")
-	-- 	local shellcheck = require("efmls-configs.linters.shellcheck")
-	-- 	local shfmt = require("efmls-configs.formatters.shfmt")
-	-- 	-- local alex = require("efmls-configs.linters.alex")
-	-- 	local hadolint = require("efmls-configs.linters.hadolint")
-	-- 	-- local solhint = require("efmls-configs.linters.solhint")
-	--
-	-- 	-- configure efm server
-	-- 	lspconfig.efm.setup({
-	-- 		filetypes = {
-	-- 			"lua",
-	-- 			"python",
-	-- 			"json",
-	-- 			"jsonc",
-	-- 			"sh",
-	-- 			"javascript",
-	-- 			"javascriptreact",
-	-- 			"typescript",
-	-- 			"typescriptreact",
-	-- 			-- "svelte",
-	-- 			-- "vue",
-	-- 			-- "markdown",
-	-- 			"docker",
-	-- 			-- "solidity",
-	-- 			"html",
-	-- 			"css",
-	-- 			"php",
-	-- 		},
-	-- 		init_options = {
-	-- 			documentFormatting = true,
-	-- 			documentRangeFormatting = true,
-	-- 			hover = true,
-	-- 			documentSymbol = true,
-	-- 			codeAction = true,
-	-- 			completion = true,
-	-- 		},
-	-- 		-- html, python formattes not working need to check -------------
-	-- 		settings = {
-	-- 			languages = {
-	-- 				lua = { luacheck, stylua },
-	-- 				python = { flake8, black },
-	-- 				typescript = { eslint_d, prettierd },
-	-- 				json = { eslint_d, fixjson },
-	-- 				jsonc = { eslint_d, fixjson },
-	-- 				sh = { shellcheck, shfmt },
-	-- 				javascript = { eslint_d, prettierd },
-	-- 				javascriptreact = { eslint_d, prettierd },
-	-- 				typescriptreact = { eslint_d, prettierd },
-	-- 				-- svelte = { eslint_d, prettierd },
-	-- 				-- vue = { eslint_d, prettierd },
-	-- 				-- markdown = { alex, prettierd },
-	-- 				docker = { hadolint, prettierd },
-	-- 				-- solidity = { solhint },
-	-- 				html = { prettierd },
-	-- 				css = { prettierd },
-	-- 			},
-	-- 		},
-	-- 	})
 end
 
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 	config = config,
-	lazy = false,
 	dependencies = {
 		"windwp/nvim-autopairs",
 		"williamboman/mason.nvim",
-		"creativenull/efmls-configs-nvim",
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
