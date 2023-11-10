@@ -27,6 +27,7 @@ local config = function()
 			"gitignore",
 			"python",
 			"vue",
+			"php",
 		},
 		auto_install = true,
 		highlight = {
@@ -48,5 +49,9 @@ end
 return {
 	"nvim-treesitter/nvim-treesitter",
 	lazy = false,
+	dependencies = {
+		"nvim-treesitter/nvim-treesitter-textobjects",
+		"windwp/nvim-ts-autotag",
+	},
 	config = config,
 }
