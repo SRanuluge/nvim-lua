@@ -81,6 +81,27 @@ local config = function()
 	-- 	filetypes = { "solidity" },
 	-- })
 
+	-- need to check not working
+	lspconfig.phpactor.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+		init_options = {
+			["language_server_phpstan.enabled"] = false,
+			["language_server_psalm.enabled"] = false,
+		},
+	})
+
+	-- need to check error mssages are not showing
+	lspconfig.html.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
+	})
+
+	lspconfig.cssls.setup({
+		oon_attach = on_attach,
+		capabilities = capabilities,
+	})
+
 	-- html, typescriptreact, javascriptreact, css, sass, scss, less, svelte, vue
 	lspconfig.emmet_ls.setup({
 		capabilities = capabilities,
@@ -104,7 +125,7 @@ local config = function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 	})
-
+	--
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
 	local flake8 = require("efmls-configs.linters.flake8")
@@ -114,7 +135,7 @@ local config = function()
 	local fixjson = require("efmls-configs.formatters.fixjson")
 	local shellcheck = require("efmls-configs.linters.shellcheck")
 	local shfmt = require("efmls-configs.formatters.shfmt")
-	local alex = require("efmls-configs.linters.alex")
+	-- local alex = require("efmls-configs.linters.alex")
 	local hadolint = require("efmls-configs.linters.hadolint")
 	-- local solhint = require("efmls-configs.linters.solhint")
 
@@ -132,11 +153,12 @@ local config = function()
 			"typescriptreact",
 			-- "svelte",
 			-- "vue",
-			"markdown",
+			-- "markdown",
 			"docker",
 			-- "solidity",
-      "html",
+			"html",
 			"css",
+			"php",
 		},
 		init_options = {
 			documentFormatting = true,
@@ -146,6 +168,7 @@ local config = function()
 			codeAction = true,
 			completion = true,
 		},
+		-- html, python formattes not working need to check -------------
 		settings = {
 			languages = {
 				lua = { luacheck, stylua },
@@ -159,10 +182,10 @@ local config = function()
 				typescriptreact = { eslint_d, prettierd },
 				-- svelte = { eslint_d, prettierd },
 				-- vue = { eslint_d, prettierd },
-				markdown = { alex, prettierd },
+				-- markdown = { alex, prettierd },
 				docker = { hadolint, prettierd },
 				-- solidity = { solhint },
-        html = { prettierd },
+				html = { prettierd },
 				css = { prettierd },
 			},
 		},
@@ -171,7 +194,7 @@ end
 
 return {
 	"neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
+	event = { "BufReadPre", "BufNewFile" },
 	config = config,
 	lazy = false,
 	dependencies = {
@@ -181,6 +204,6 @@ return {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
+		{ "antosha417/nvim-lsp-file-operations", config = true },
 	},
 }
